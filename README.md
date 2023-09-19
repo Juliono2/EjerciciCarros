@@ -29,3 +29,7 @@ Para utilizar POSTMAN, sigue estos pasos:
 - **URL**: /carros
 - **Método**: GET
 - **Descripción**: Obtiene la lista de carros guardados en el archivo de texto.
+
+## Considere
+
+Si se ejecuta primero el metodo GET, entonces fallara porque aun no se ha creado el archivo carros.txt
