@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-carros_file = "carros.txt"
+carros_file = "carros.txt"      # Archivo donde se guarda los datos de carros
 
 # Ruta para agregar un carro
 @app.route('/carros', methods=["POST"])
@@ -10,7 +10,7 @@ def agregar_carro():
     data = request.get_json()
     if data:
         carro_info = f"{data['marca']}, {data['color']}, {data['estado']}\n"
-        with open(carros_file, 'a+') as archivo:
+        with open(carros_file, 'a+') as archivo:            # Abrir el documento para escritura
             archivo.write(carro_info)
         return 'El carro fue agregado'
     else:
@@ -21,10 +21,10 @@ def agregar_carro():
 def obtener_carros():
     carros = []
     try:
-        with open(carros_file, 'r') as archivo:
+        with open(carros_file, 'r') as archivo:         # Abrir el documento para lectura
             for linea in archivo:
                 carro_info = linea.strip()
-                marca, color, estado = carro_info.split(", ")
+                marca, color, estado = carro_info.split(", ")   #Separamos por esos caracteres
                 carros.append({
                     "marca": marca,
                     "color": color,
